@@ -1,0 +1,32 @@
+CREATE TABLE public.user (
+	code uuid NOT NULL DEFAULT gen_random_uuid(),
+	username varchar NOT NULL,
+	email varchar NOT NULL,
+	"password" varchar NOT NULL
+);
+
+CREATE TABLE public.song (
+	code uuid NOT NULL DEFAULT gen_random_uuid(),
+	title varchar NOT NULL,
+	duration time NOT NULL,
+	CONSTRAINT song_pk PRIMARY KEY (code)
+);
+
+CREATE TABLE public.playlist (
+	code uuid NOT NULL DEFAULT gen_random_uuid(),
+	title varchar NOT NULL,
+	description varchar NOT NULL,
+	user_code uuid NOT NULL,
+	CONSTRAINT playlist_pk PRIMARY KEY (code),
+	CONSTRAINT playlist_fk FOREIGN KEY (user_code) REFERENCES public.user(code) ON UPDATE CASCADE
+);
+
+CREATE TABLE public.songxplaylist (
+	code uuid NOT NULL DEFAULT gen_random_uuid(),
+	song_code uuid NULL,
+	playlist_code uuid NULL,
+	date_added timestamp NOT NULL,
+	CONSTRAINT songxplaylist_pk PRIMARY KEY (code),
+	CONSTRAINT songxplaylist_fk_song FOREIGN KEY (song_code) REFERENCES public.song(code) ON UPDATE CASCADE,
+	CONSTRAINT songxplaylist_fk_playlist FOREIGN KEY (playlist_code) REFERENCES public.playlist(code) ON UPDATE CASCADE
+);
