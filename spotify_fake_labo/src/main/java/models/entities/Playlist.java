@@ -1,4 +1,4 @@
-package com.example.demo.models.entities;
+package models.entities;
 
 import java.util.UUID;
 

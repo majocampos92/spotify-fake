@@ -9,5 +9,4 @@ class SpotifyFakeLaboApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }

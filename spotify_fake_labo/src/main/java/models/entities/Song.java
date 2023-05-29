@@ -1,4 +1,4 @@
-package com.example.demo.models.entities;
+package models.entities;
 
 import java.util.UUID;
 
@@ -14,12 +14,15 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import java.util.*;
 
 @Data
 @NoArgsConstructor
 @Entity
 @Table(name = "song")
+@ToString(exclude = {"playlistSongs"})
 public class Song {
 	
 	@Id
@@ -37,7 +40,7 @@ public class Song {
 	@JsonIgnore
 	private List<SongXPlaylist> playlistSongs;
 
-	public Song(String title, Integer duration) {
+	public Song(String title, Integer duration, SongXPlaylist songXPlaylist) {
 		super();
 		this.title = title;
 		this.duration = duration;

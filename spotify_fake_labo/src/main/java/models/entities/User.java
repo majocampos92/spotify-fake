@@ -1,4 +1,4 @@
-package com.example.demo.models.entities;
+package models.entities;
 
 import java.util.UUID;
 
@@ -14,6 +14,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.*;
 
 @Data
